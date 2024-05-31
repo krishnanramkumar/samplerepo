@@ -1,7 +1,8 @@
-export default async function(request) {
-  // Your middleware logic here
-  const response = await fetch(event.request);
-  // Modify response headers (optional)
-  response.headers.set('X-Custom-Header', 'My Value');
-  return response;
+export async function onRequest(context) {
+  try {
+    console.log("Helloooooooo Haiiiii")
+    return await context.next();
+  } catch (err) {
+    return new Response(`${err.message}\n${err.stack}`, { status: 500 });
+  }
 }
