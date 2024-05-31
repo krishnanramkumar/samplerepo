@@ -3,9 +3,10 @@ export async function onRequest(context) {
     console.log("Helloooooooo Haiiiii")
     var result =  await context.next();
     console.log(result.headers);
-    result.headers.append(
+   let value = await context.env.MY_KV_NAMESPACE.get("mykey");
+   result.headers.append(
       "x-workers-hello",
-      "Hello from Cloudflare Workers"
+      value
     );
     return result;
   } catch (err) {
