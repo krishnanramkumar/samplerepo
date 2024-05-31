@@ -1,10 +1,7 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request) {
+export default async function(request) {
+  // Your middleware logic here
   const response = await fetch(event.request);
-  // Add custom header here
-  response.headers.set('X-Custom-Header', 'krishnan');
+  // Modify response headers (optional)
+  response.headers.set('X-Custom-Header', 'My Value');
   return response;
 }
