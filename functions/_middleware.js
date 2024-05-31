@@ -1,7 +1,9 @@
 export async function onRequest(context) {
   try {
     console.log("Helloooooooo Haiiiii")
-    return await context.next();
+    var result =  await context.next();
+    console.log(result);
+    return result;
   } catch (err) {
     return new Response(`${err.message}\n${err.stack}`, { status: 500 });
   }
