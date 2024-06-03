@@ -1,8 +1,6 @@
 export async function onRequest(context) {
   try {
-    console.log("Helloooooooo Haiiiii")
     var result =  await context.next();
-    console.log(result.headers);
    let value = await context.env.MY_KV_NAMESPACE.get("mykey");
    result.headers.append(
       "x-workers-hello",
