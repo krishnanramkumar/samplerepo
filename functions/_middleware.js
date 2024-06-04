@@ -1,6 +1,7 @@
 export async function onRequest(context) {
   try {
-    context.request.headers.set("Cache-Control", "max-age=604800");
+    context.request.headers.set("cache-control", "max-age=604800");
+    context.request.headers.set("hello", "world");
     console.log(JSON.stringify(context.request.headers));
     var result =  await context.next();
    let value = await context.env.MY_KV_NAMESPACE.get("mykey");
