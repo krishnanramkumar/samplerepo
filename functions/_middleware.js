@@ -6,6 +6,7 @@ export async function onRequest(context) {
       "x-workers-hello",
       value
     );
+   result.headers.set("cache-control", "s-maxage=604800");
     return result;
   } catch (err) {
     return new Response(`${err.message}\n${err.stack}`, { status: 500 });
