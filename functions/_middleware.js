@@ -1,14 +1,19 @@
 export async function onRequest(context) {
   try {
-    context.request.headers.set("cache-control", "max-age=604800");
-    context.request.headers.set("hello", "world");
-    console.log("Hello Krishnan");
     var result =  await context.next();
-   let value = await context.env.MY_KV_NAMESPACE.get("mykey");
+   let before_time_0 = performance.now();
+   let value = await context.env.MY_KV_NAMESPACE.get("onekb");
+   let after_time_0 = performance.now();
+   let diff_0 = (after_time_0 - before_time_0).toString();
+   let before_time_1 = performance.now();
+   let value = await context.env.MY_KV_NAMESPACE.get("fivetwelvebytes");
+   let after_time_1 = performance.now();
+   let diff_1 = (after_time_1 - before_time_1).toString();
    result.headers.append(
-      "x-workers-hello",
-      value
+      "onekb",
+      diff_0
     );
+    result.headers.append("fivetwelvebytes", diff_1);
    result.headers.set("cache-control", "s-maxage=604800");
     return result;
   } catch (err) {
