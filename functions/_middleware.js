@@ -22,7 +22,7 @@ export async function onRequest(context) {
     //result.headers.append("fivetwelvebytes", diff_1);
     result.headers.append("fourhundredkb",diff_2);
     result.headers.append("fourhundredkbvalue",value_2.substring(0,100));
-    result.headers.append("fetching from"", fetching_from);
+    result.headers.append("fetching from", fetching_from);
     return result;
   } catch (err) {
     return new Response(`${err.message}\n${err.stack}`, { status: 500 });
