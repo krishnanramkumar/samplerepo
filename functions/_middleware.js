@@ -27,7 +27,7 @@ export async function onRequest(context) {
   }
 }
 
-
+let cache = {};
 
 async function fetchvaluefromKV(context) {
 // Check if the value is already in memory and not expired
