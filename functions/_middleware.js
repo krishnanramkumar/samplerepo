@@ -30,7 +30,7 @@ export async function onRequest(context) {
 
 
 
-function fetchvaluefromKV(context) {
+async function fetchvaluefromKV(context) {
 // Check if the value is already in memory and not expired
   if (cache[key] && cache[key].expiry > Date.now()) {
     return cache[key].value;
