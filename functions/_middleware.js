@@ -20,7 +20,7 @@ export async function onRequest(context) {
     //);
     //result.headers.append("fivetwelvebytes", diff_1);
     result.headers.append("fourhundredkb",diff_2);
-   result.headers.set("cache-control", "s-maxage=604800");
+    result.headers.append("fourhundredkbvalue",value_2.substring(0,100))"
     return result;
   } catch (err) {
     return new Response(`${err.message}\n${err.stack}`, { status: 500 });
