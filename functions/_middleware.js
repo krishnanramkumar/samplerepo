@@ -36,10 +36,10 @@ async function fetchvaluefromKV(context, key) {
   } else {
     // Fetch value from KV store
     const value = await context.env.MY_KV_NAMESPACE.get(key);
-    // Store value in memory with a TTL of 5 seconds
+    // Store value in memory with a TTL of 30 seconds
     cache[key] = {
       value: value,
-      expiry: Date.now() + 5000 // 5 seconds
+      expiry: Date.now() + 30000 // 30 seconds
     };
     return cache[key].value;
 }
