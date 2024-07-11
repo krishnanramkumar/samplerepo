@@ -10,8 +10,8 @@ export async function onRequest(context) {
    //let after_time_1 = Date.now();
    //let diff_1 = (after_time_1 - before_time_1).toString();
      let before_time_2 = Date.now();
-     //let value_2 = await context.env.MY_KV_NAMESPACE.get("fourhundredkb");
-     let value_2 = await fetchvaluefromKV(context, "fourhundredkb");
+     let value_2 = await context.env.MY_KV_NAMESPACE.get("fourhundredkb");
+     //let value_2 = await fetchvaluefromKV(context, "fourhundredkb");
      let after_time_2 = Date.now();
      let diff_2 = (after_time_2 - before_time_2).toString();
    //result.headers.append(
