@@ -11,7 +11,7 @@ export async function onRequest(context) {
    //let diff_1 = (after_time_1 - before_time_1).toString();
      let before_time_2 = Date.now();
      //let value_2 = await context.env.MY_KV_NAMESPACE.get("fourhundredkb");
-     let value_2 = await fetchvaluefromKV(context);
+     let value_2 = await fetchvaluefromKV(context, "fourhundredkb");
      let after_time_2 = Date.now();
      let diff_2 = (after_time_2 - before_time_2).toString();
    //result.headers.append(
@@ -29,13 +29,13 @@ export async function onRequest(context) {
 
 let cache = {};
 
-async function fetchvaluefromKV(context) {
+async function fetchvaluefromKV(context, key) {
 // Check if the value is already in memory and not expired
   if (cache[key] && cache[key].expiry > Date.now()) {
     return cache[key].value;
   } else {
     // Fetch value from KV store
-    const value = await context.env.MY_KV_NAMESPACE.get("fourhundredkb");
+    const value = await context.env.MY_KV_NAMESPACE.get(key);
     // Store value in memory with a TTL of 5 seconds
     cache[key] = {
       value: value,
