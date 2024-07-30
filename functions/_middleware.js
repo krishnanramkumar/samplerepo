@@ -1,11 +1,11 @@
 export async function onRequest(context) {
 	try {
 
-                var request = context.request()
+                
                   const keys = []
 
   // Check for custom headers
-  		for (const [key, value] of request.headers.entries()) {
+  		for (const [key, value] of context.request.headers.entries()) {
     		// Check if the header key starts with 'x-' or 'X-' (common prefix for custom headers)
     		if (key.startsWith('x-') || key.startsWith('X-')) {
       			keys.push(value)
